@@ -1,11 +1,13 @@
 <!doctype html>
 <html ng-app="inspinia">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>inspinia</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline'">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -19,8 +21,9 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
-  </head>
-  <body ng-controller="MainController as main">
+</head>
+
+<body ng-controller="MainController as main">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -43,5 +46,6 @@
     <!-- endinject -->
     <!-- endbuild -->
 
-  </body>
+</body>
+
 </html>
