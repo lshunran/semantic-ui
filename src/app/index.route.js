@@ -20,7 +20,7 @@
                 data: { pageTitle: 'Example view' }
             })
             .state('index.minor', {
-                url: "/minor",
+                url: "/minor/:key/:value",
                 templateUrl: "app/minor/minor.html",
                 controller: 'MinorController',
                 data: { pageTitle: 'Example view' }

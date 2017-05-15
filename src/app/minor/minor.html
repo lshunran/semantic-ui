@@ -7,30 +7,55 @@
     <div class="ibox-content">
         <div class="row">
             <div class="col-md-6">
-                <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="" method="post">
+                <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/stop-words" method="post">
 
-                    <div class="form-group"><label class="col-lg-3 control-label">上传训练集<span style="color:red">*</span></label>
-                        <div class="col-lg-9">
+                    <div class="form-group"><label class="col-lg-3 control-label">上传停用词表(可选)</label>
+                        <div class="col-lg-6">
                             <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
-                            <input class="form-control" type="file" id="trainFile" name="sample" />
-
+                            <input class="form-control" type="file" name="stopwords" />
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>{{file.stopwords}} 已上传成功</h5>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-lg-3 control-label"></label>
                         <div class="col-lg-9">
-                            <button class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right" ng-onclick="training()">开始训练</button>
+                            <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
                         </div>
                     </div>
                 </form>
 
-                <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:7777/file" method="post">
+                <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/pro-words" method="post">
+
+                    <div class="form-group"><label class="col-lg-3 control-label">上传语料专业词汇(可选)</label>
+                        <div class="col-lg-6">
+                            <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
+                            <input class="form-control" type="file" name="prowords" />
+
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>{{file.prowords}} 已上传成功</h5>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-lg-3 control-label"></label>
+                        <div class="col-lg-9">
+                            <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
+                        </div>
+                    </div>
+                </form>
+
+                <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/raw-data" method="post">
 
                     <div class="form-group"><label class="col-lg-3 control-label">上传预测集<span style="color:red">*</span></label>
-                        <div class="col-lg-9">
+                        <div class="col-lg-6">
                             <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
-                            <input class="form-control" type="file" ng-model="selectedFile" name="sample" />
+                            <input class="form-control" type="file" name="file" />
 
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>{{file.rawdata}} 已上传成功</h5>
                         </div>
                     </div>
 
