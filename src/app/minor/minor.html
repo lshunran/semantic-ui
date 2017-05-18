@@ -1,7 +1,7 @@
 <br/>
 <div class="ibox float-e-margins">
     <div class="ibox-title">
-        <h5>项目基础信息</h5>
+        <h5>基础设置(可选)</h5>
         <!--<h5>项目基础信息 <a><i class="fa fa-question-circle" tooltip-placement="right" uib-tooltip="{{'ProjectBasicInfo' | translate }}"></i></a></h5>-->
     </div>
     <div class="ibox-content">
@@ -9,65 +9,185 @@
             <div class="col-md-6">
                 <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/stop-words" method="post">
 
-                    <div class="form-group"><label class="col-lg-3 control-label">上传停用词表(可选)</label>
+                    <div class="form-group"><label class="col-lg-3 control-label">上传停用词表</label>
                         <div class="col-lg-6">
                             <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
-                            <input class="form-control" type="file" name="stopwords" />
+                            <input class="form-control" data-filename-placement="inside" type="file" title="选择文件" name="stopwords" />
                         </div>
                         <div class="col-lg-3">
-                            <h5>{{file.stopwords}} 已上传成功</h5>
+                            <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
+                            <input type="button" value="清空" class="ladda-button ladda-button-demo btn btn-danger btn-outline" ng-click="clearStopwords()">
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-lg-3 control-label"></label>
+                    <div ng-if="file.stopwords" class="form-group"><label class="col-lg-3 control-label"></label>
                         <div class="col-lg-9">
-                            <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
+                            <h5>停用词表:{{file.stopwords}} 已上传成功</h5>
                         </div>
                     </div>
                 </form>
 
+            </div>
+
+            <div class="col-md-6">
                 <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/pro-words" method="post">
 
-                    <div class="form-group"><label class="col-lg-3 control-label">上传语料专业词汇(可选)</label>
+                    <div class="form-group"><label class="col-lg-3 control-label">上传语料专业词汇</label>
                         <div class="col-lg-6">
                             <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
-                            <input class="form-control" type="file" name="prowords" />
+                            <input class="form-control" data-filename-placement="inside" type="file" title="选择文件" name="prowords" />
 
                         </div>
                         <div class="col-lg-3">
-                            <h5>{{file.prowords}} 已上传成功</h5>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><label class="col-lg-3 control-label"></label>
-                        <div class="col-lg-9">
                             <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
-                        </div>
-                    </div>
-                </form>
-
-                <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/raw-data" method="post">
-
-                    <div class="form-group"><label class="col-lg-3 control-label">上传预测集<span style="color:red">*</span></label>
-                        <div class="col-lg-6">
-                            <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
-                            <input class="form-control" type="file" name="file" />
-
-                        </div>
-                        <div class="col-lg-3">
-                            <h5>{{file.rawdata}} 已上传成功</h5>
+                            <input type="button" value="清空" class="ladda-button ladda-button-demo btn btn-danger btn-outline" ng-click="clearProwords()">
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-lg-3 control-label"></label>
+                    <div ng-if="file.prowords" class="form-group"><label class="col-lg-3 control-label"></label>
                         <div class="col-lg-9">
-                            <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right" ng-click="ok()">开始预测</button>
+                            <h5>专业词汇词典:{{file.prowords}} 已上传成功</h5>
                         </div>
                     </div>
                 </form>
             </div>
-
         </div>
 
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="ibox-title">
+                <h5>批量预测</h5>
+                <!--<h5>项目基础信息 <a><i class="fa fa-question-circle" tooltip-placement="right" uib-tooltip="{{'ProjectBasicInfo' | translate }}"></i></a></h5>-->
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/train-model" method="post">
+
+                            <div class="form-group"><label class="col-lg-3 control-label">上传自定义模型(可选)</label>
+                                <div class="col-lg-6">
+                                    <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
+                                    <input class="form-control" data-filename-placement="inside" type="file" title="选择文件" name="trainmodel" />
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
+                                    <input type="button" value="清空" class="ladda-button ladda-button-demo btn btn-danger btn-outline" ng-click="clearTrainmodel()">
+                                </div>
+                            </div>
+
+                            <div ng-if="file.trainmodel" class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <h5>自定义模型:{{file.trainmodel}} 已上传成功</h5>
+                                </div>
+                            </div>
+                        </form>
+                        <!--****************-->
+                        <span us-spinner spinner-key="spinner-predict-model"></span>
+
+                        <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/raw-data" method="post">
+
+                            <div class="form-group"><label class="col-lg-3 control-label">上传预测集<span style="color:red">*</span></label>
+                                <div class="col-lg-6">
+                                    <!--<input type="text" ng-model="ctrlScope.projectName" name="projectName" class="form-control" ng-disabled="projectControl" required>-->
+                                    <input class="form-control" data-filename-placement="inside" type="file" title="选择文件" name="file" />
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
+                                    <input type="button" value="清空" class="ladda-button ladda-button-demo btn btn-danger btn-outline" ng-click="clearRawdata()">
+                                </div>
+                            </div>
+
+                            <div ng-if="file.rawdata" class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <h5>预测集:{{file.rawdata}} 已上传成功</h5>
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <button type="button" class="btn btn-primary btn-outline" data-style="expand-right" ng-click="predict()">开始预测</button>
+                                </div>
+                            </div>
+                            <div ng-if="file.predict_res" class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <h5>预测集已经预测完毕,请下载保存({{file.predict_res}})</h5>
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="col-lg-3 control-label">结果下载</label>
+                                <div class="col-lg-9">
+                                    <!--<button type="button" class="btn btn-primary btn-outline" data-style="expand-right" ng-click="download()">点击下载</button>-->
+                                    <a href="{{downloadcvsRes}}" class="btn btn-primary btn-outline">下载结果</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="ibox-title">
+                <h5>训练模型(可选)</h5>
+                <!--<h5>项目基础信息 <a><i class="fa fa-question-circle" tooltip-placement="right" uib-tooltip="{{'ProjectBasicInfo' | translate }}"></i></a></h5>-->
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal" name="basicInfo" enctype="multipart/form-data" action="http://localhost:8000/upload/train-set" method="post">
+
+                            <div class="form-group"><label class="col-lg-3 control-label">上传训练集</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control" data-filename-placement="inside" type="file" title="选择文件" name="trainset" />
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="submit" class="ladda-button ladda-button-demo btn btn-primary btn-outline" data-style="expand-right">上传</button>
+                                    <input type="button" value="清空" class="ladda-button ladda-button-demo btn btn-danger btn-outline" ng-click="clearTrainset()">
+                                </div>
+                            </div>
+
+                            <div ng-if="file.trainset" class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <h5>训练集:{{file.trainset}} 已上传成功</h5>
+                                </div>
+                            </div>
+
+                            <div class="form-group"><label class="col-lg-3 control-label">选择模型</label>
+                                <div class="col-lg-9">
+                                    <!--<button type="button" class="btn btn-primary btn-outline" data-style="expand-right">开始训练</button>-->
+                                    <input type="radio" name="model" ng-model="model" value="1">&nbsp;随机森林 &nbsp;
+                                    <input type="radio" name="model" ng-model="model" value="2">&nbsp;朴素贝叶斯 &nbsp;
+                                    <input type="radio" name="model" ng-model="model" value="3">&nbsp;逻辑回归 &nbsp;
+                                </div>
+                            </div>
+                            <span us-spinner spinner-key="spinner-train-model"></span>
+                            <div class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <button type="button" class="btn btn-primary btn-outline" data-style="expand-right" ng-click="training()">开始训练</button>
+                                </div>
+                            </div>
+                            <div ng-if="file.model" class="form-group"><label class="col-lg-3 control-label"></label>
+                                <div class="col-lg-9">
+                                    <h5>模型:{{file.model}} 已训练完成,请下载保存</h5>
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="col-lg-3 control-label">结果下载</label>
+                                <div class="col-lg-9">
+                                    <!--<button type="button" class="btn btn-primary btn-outline" data-style="expand-right" ng-click="download()">点击下载</button>-->
+                                    <a href="{{downloadModel}}" class="btn btn-primary btn-outline">下载模型</a>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
